@@ -1,0 +1,46 @@
+@media screen and (min-width: 1440px) {
+  body {
+    background-color: var(--eggshell);
+    max-width: 920px;
+    margin: 5rem auto;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: var(--white);
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  header > img {
+    border-radius: 1rem;
+  }
+
+  .content {
+    padding: 0;
+  }
+
+  .card {
+    align-self: stretch;
+  }
+
+  th,
+  td {
+    width: 50%;
+  }
+}

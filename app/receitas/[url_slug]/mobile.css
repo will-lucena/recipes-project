@@ -1,0 +1,119 @@
+:root {
+  --nutmeg: hsl(14, 45%, 36%);
+  --dark-raspberry: hsl(332, 51%, 32%);
+  --white: hsl(0, 0%, 100%);
+  --rose-white: hsl(330, 100%, 98%);
+  --eggshell: hsl(30, 54%, 90%);
+  --light-grey: hsl(30, 18%, 87%);
+  --wenge-brown: hsl(30, 10%, 34%);
+  --dark-charcoal: hsl(24, 5%, 18%);
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+li,
+span,
+hr {
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  padding: 2rem;
+  gap: 2rem;
+  background-color: var(--white);
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  font-family: var(--font-young-serif);
+  color: var(--dark-charcoal);
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-family: var(--font-young-serif);
+  color: var(--nutmeg);
+}
+
+.card__title {
+  font-family: var(--font-young-serif);
+  font-size: 1.5rem;
+  color: var(--dark-raspberry);
+}
+
+p {
+  font-family: var(--font-young-serif);
+  color: var(--wenge-brown);
+  line-height: 1.5;
+}
+
+ul,
+ol {
+  padding: 0 0 0 1.5rem;
+}
+
+li:not(:first-child) {
+  margin-top: 0.5rem;
+}
+
+li,
+th,
+td {
+  font-family: var(--font-outfit);
+  color: var(--wenge-brown);
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+li > span > strong {
+  font-weight: 700;
+  color: var(--dark-charcoal);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--rose-white);
+}
+
+hr {
+  width: 100%;
+  color: var(--light-grey);
+  opacity: 0.5;
+}
+
+table {
+  width: 100%;
+  border-spacing: 0;
+}
+
+td,
+th {
+  text-align: left;
+  border-bottom: 1px solid var(--light-grey);
+  height: 40px;
+  font-size: 1rem;
+}
+
+th {
+  padding-left: 2rem;
+}
+
+td {
+  color: var(--nutmeg);
+}
