@@ -4,8 +4,6 @@ import { Recipe } from '@/models/recipe'
 import { toJpeg } from 'html-to-image'
 import Image from 'next/image'
 import { RefObject, useCallback, useRef } from 'react'
-import './desktop.css'
-import './mobile.css'
 
 export default function RecipePage(recipe: Recipe) {
   const fullpage = useRef<HTMLDivElement>(null)
