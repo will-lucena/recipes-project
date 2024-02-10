@@ -1,20 +1,23 @@
 import { Recipe } from '@/models/recipe'
 import { getRecipes } from '@/services/recipes.service'
+import Link from 'next/link'
 
 export default async function RecipesPage() {
   const recipes = await getRecipes()
 
   const recipesList = recipes.map((recipe: Recipe, index: number) => (
-    <div key={index}>
-      <h2>{recipe.title}</h2>
+    <li key={index}>
+      <Link href={`/receitas/${recipe.slug}`}>
+        <h2>{recipe.title}</h2>
+      </Link>
       <p>{recipe.description}</p>
-    </div>
+    </li>
   ))
 
   return (
-    <div>
+    <main>
       <h1>Receitas</h1>
-      {recipesList}
-    </div>
+      <ul>{recipesList}</ul>
+    </main>
   )
 }
