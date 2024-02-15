@@ -1,6 +1,6 @@
 import { Recipe } from '@/models/recipe'
 
-const mockResponseA: Recipe = {
+const mockResponseA = new Recipe({
   imgUrl:
     'https://raw.githubusercontent.com/will-lucena/recipes-project/main/assets/images/image-omelette.jpeg',
   title: 'Simple Omelette Recipe',
@@ -36,9 +36,9 @@ const mockResponseA: Recipe = {
     protein: 13,
   },
   slug: 'simple-omelette',
-}
+})
 
-const mockResponseB: Recipe = {
+const mockResponseB = new Recipe({
   imgUrl:
     'https://raw.githubusercontent.com/will-lucena/recipes-project/main/assets/images/image-omelette.jpeg',
   title: 'Mac and Cheese',
@@ -72,7 +72,7 @@ const mockResponseB: Recipe = {
     protein: 15,
   },
   slug: 'mac-and-cheese',
-}
+})
 
 type RecipesDb = {
   [key: string]: Recipe
@@ -88,4 +88,7 @@ const mockDb: RecipesDb[] = [
 export const mockDatabase = {
   get: (slug: string) => mockDb.find((recipe) => recipe[slug])?.[slug],
   getAll: () => mockDb.map((recipe) => Object.values(recipe)[0]),
+  set: (slug: string, recipe: Recipe) => {
+    mockDb.push({ [slug]: recipe })
+  },
 }
