@@ -19,7 +19,7 @@ export async function GET(
     })
   }
 
-  return new NextResponse(null, {
+  return new NextResponse(JSON.stringify(null), {
     status: 404,
   })
 }
