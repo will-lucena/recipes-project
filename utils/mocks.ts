@@ -91,6 +91,10 @@ export const mockDatabase = {
   set: (slug: string, recipe: Recipe) => {
     mockDb.push({ [slug]: recipe })
   },
+  delete: (slug: string) => {
+    const index = mockDb.findIndex((recipe) => recipe[slug])
+    mockDb.splice(index, 1)
+  },
 }
 
 export const mockBigmac = {

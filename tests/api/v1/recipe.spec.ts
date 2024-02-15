@@ -54,3 +54,8 @@ test('update a recipe', async ({ request }) => {
   const body = await response.json()
   expect(body).toEqual({ ...mockBigmac, ...updatedBigmac, slug: 'big-mac' })
 })
+
+test('delete a recipe', async ({ request }) => {
+  const response = await request.delete('/api/v1/receitas/big-mac')
+  expect(response.status()).toBe(200)
+})

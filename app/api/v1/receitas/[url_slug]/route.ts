@@ -75,3 +75,18 @@ export async function PUT(
     },
   })
 }
+
+export async function DELETE(
+  req: NextApiRequest,
+  { params }: { params: { url_slug: string } },
+  res: NextApiResponse<Recipe>
+) {
+  mockDatabase.delete(params.url_slug)
+
+  return new NextResponse(JSON.stringify(null), {
+    status: 200,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+}
