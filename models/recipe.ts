@@ -94,4 +94,16 @@ export class Recipe {
 
     return errors
   }
+
+  update(recipe: RecipeType) {
+    this.imgUrl = recipe.imgUrl || this.imgUrl
+    this.title = recipe.title || this.title
+    this.description = recipe.description || this.description
+    this.preparationTime = recipe.preparationTime || this.preparationTime
+    this.ingredients = recipe.ingredients || this.ingredients
+    this.instructions = recipe.instructions || this.instructions
+    this.nutrition = recipe.nutrition || this.nutrition
+
+    return this
+  }
 }
