@@ -113,19 +113,19 @@ export default function RecipePage(recipe: Recipe) {
                 <span>
                   <strong>Total:</strong>
                 </span>
-                <span>{preparationTime.total}</span>
+                <span>{preparationTime?.total}</span>
               </li>
               <li>
                 <span>
                   <strong>Preparation:</strong>
                 </span>
-                <span> {preparationTime.preparation}</span>
+                <span> {preparationTime?.preparation}</span>
               </li>
               <li>
                 <span>
                   <strong>Cooking:</strong>
                 </span>
-                <span> {preparationTime.cooking}</span>
+                <span> {preparationTime?.cooking}</span>
               </li>
             </ul>
           </section>
@@ -134,7 +134,7 @@ export default function RecipePage(recipe: Recipe) {
             <h2>Ingredients</h2>
 
             <ul>
-              {ingredients.map((ingredient, index) => {
+              {ingredients?.map((ingredient, index) => {
                 return (
                   <li key={index}>
                     <span> {ingredient}</span>
@@ -149,7 +149,7 @@ export default function RecipePage(recipe: Recipe) {
             <h2>Instructions</h2>
 
             <ol>
-              {instructions.map((instruction, index) => {
+              {instructions?.map((instruction, index) => {
                 return (
                   <li key={index}>
                     <span> {instruction}</span>

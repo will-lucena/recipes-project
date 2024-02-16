@@ -7,7 +7,6 @@ export const getRecipe = async (url_slug: string) => {
   const response = await fetch(
     `http://localhost:3000/api/v1/receitas/${url_slug}`,
     {
-      cache: 'no-store',
       next: {
         revalidate: 1,
       },

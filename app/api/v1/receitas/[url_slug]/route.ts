@@ -1,10 +1,10 @@
 import { Recipe } from '@/models/recipe'
 import { mockDatabase } from '@/utils/mocks'
-import type { NextApiRequest, NextApiResponse } from 'next'
-import { NextResponse } from 'next/server'
+import type { NextApiResponse } from 'next'
+import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(
-  req: NextApiRequest,
+  req: NextRequest,
   { params }: { params: { url_slug: string } },
   res: NextApiResponse<Recipe>
 ) {
@@ -25,7 +25,7 @@ export async function GET(
 }
 
 export async function POST(
-  req: NextApiRequest,
+  req: NextRequest,
   { params }: { params: { url_slug: string } },
   res: NextApiResponse<Recipe>
 ) {
@@ -53,7 +53,7 @@ export async function POST(
 }
 
 export async function PUT(
-  req: NextApiRequest,
+  req: NextRequest,
   { params }: { params: { url_slug: string } },
   res: NextApiResponse<Recipe>
 ) {
@@ -77,7 +77,7 @@ export async function PUT(
 }
 
 export async function DELETE(
-  req: NextApiRequest,
+  req: NextRequest,
   { params }: { params: { url_slug: string } },
   res: NextApiResponse<Recipe>
 ) {

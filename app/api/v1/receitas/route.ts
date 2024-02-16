@@ -1,9 +1,9 @@
 import { Recipe } from '@/models/recipe'
 import { mockDatabase } from '@/utils/mocks'
-import type { NextApiRequest, NextApiResponse } from 'next'
-import { NextResponse } from 'next/server'
+import type { NextApiResponse } from 'next'
+import { NextRequest, NextResponse } from 'next/server'
 
-export async function GET(req: NextApiRequest, res: NextApiResponse<Recipe>) {
+export async function GET(req: NextRequest, res: NextApiResponse<Recipe>) {
   const recipes = mockDatabase.getAll()
 
   if (recipes) {
