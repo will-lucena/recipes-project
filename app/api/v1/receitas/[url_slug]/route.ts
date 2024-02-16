@@ -1,0 +1,92 @@
+import { Recipe } from '@/models/recipe'
+import { mockDatabase } from '@/utils/mocks'
+import type { NextApiResponse } from 'next'
+import { NextRequest, NextResponse } from 'next/server'
+
+export async function GET(
+  req: NextRequest,
+  { params }: { params: { url_slug: string } },
+  res: NextApiResponse<Recipe>
+) {
+  const recipe = mockDatabase.get(params.url_slug)
+
+  if (recipe) {
+    return new NextResponse(JSON.stringify(recipe), {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+  }
+
+  return new NextResponse(JSON.stringify(null), {
+    status: 404,
+  })
+}
+
+export async function POST(
+  req: NextRequest,
+  { params }: { params: { url_slug: string } },
+  res: NextApiResponse<Recipe>
+) {
+  const json = await req.json()
+  const hasErrors = Recipe.validate({
+    ...json,
+    slug: params.url_slug,
+  })
+
+  if (hasErrors.length > 0) {
+    return new NextResponse(JSON.stringify({ error: hasErrors.join(', ') }), {
+      status: 400,
+    })
+  }
+
+  const recipe = new Recipe({ ...json, slug: params.url_slug })
+  mockDatabase.set(recipe.slug, recipe)
+
+  return new NextResponse(JSON.stringify(recipe), {
+    status: 200,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+}
+
+export async function PUT(
+  req: NextRequest,
+  { params }: { params: { url_slug: string } },
+  res: NextApiResponse<Recipe>
+) {
+  const recipe = mockDatabase.get(params.url_slug)
+
+  if (!recipe) {
+    return new NextResponse(JSON.stringify(null), {
+      status: 404,
+    })
+  }
+
+  const updatedRecipe = recipe.update(await req.json())
+  mockDatabase.set(updatedRecipe.slug, updatedRecipe)
+
+  return new NextResponse(JSON.stringify(updatedRecipe), {
+    status: 200,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+}
+
+export async function DELETE(
+  req: NextRequest,
+  { params }: { params: { url_slug: string } },
+  res: NextApiResponse<Recipe>
+) {
+  mockDatabase.delete(params.url_slug)
+
+  return new NextResponse(JSON.stringify(null), {
+    status: 200,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+}
